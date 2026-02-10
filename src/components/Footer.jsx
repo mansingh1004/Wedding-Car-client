@@ -35,7 +35,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Browse Cars</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Our Services</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-[#9E624C] transition-colors">Booking Guide</a></li>
+              <li><a href="weddingguide" className="hover:text-[#9E624C] transition-colors">Booking Guide</a></li>
             </ul>
           </div>
 
@@ -46,7 +46,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Terms & Conditions</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-[#9E624C] transition-colors">Contact Us</a></li>
+              <li><a href="contact" className="hover:text-[#9E624C] transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
@@ -60,11 +60,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#633328]" />
-                <span>+1 (234) 567-890</span>
+                <span>+91 761 702 8000</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#633328]" />
-                <span>info@onlinewedding.com</span>
+                <span>info@weddingcar.com</span>
               </li>
             </ul>
           </div>
@@ -72,7 +72,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#633328]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[#4A2016]/60 text-xs uppercase tracking-widest font-medium">
-          <p>© 2026 Online Wedding Booking System. All Rights Reserved.</p>
+          <p>© 2026  Wedding Car Booking System. All Rights Reserved.</p>
           <div className="flex gap-6">
             <span className="cursor-pointer hover:text-[#4A2016]">Sitemap</span>
             <span className="cursor-pointer hover:text-[#4A2016]">Security</span>

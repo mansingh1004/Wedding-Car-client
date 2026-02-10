@@ -89,6 +89,7 @@
 import React from 'react';
 import About from './About';
 import FeaturedCars from './FeaturedCars';
+import Contact from './Contact';
 
 const Hero = () => {
   return (
@@ -139,13 +140,53 @@ const Hero = () => {
         </div>
 
         {/* Bottom Soft Glow */}
-        <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-[#F8F1ED]/40 to-transparent"></div>
+        {/* <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-[#F8F1ED]/40 to-transparent"></div> */}
       </section>
 
       <FeaturedCars/>
       <About/>
+      <Contact/>
     </>
   );
 };
 
 export default Hero;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

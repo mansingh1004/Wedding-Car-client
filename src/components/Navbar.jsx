@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+const navigate=useNavigate()
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#F8F1ED]/80 backdrop-blur-md px-6 py-4 flex items-center justify-between shadow-sm">
       {/* Logo Section */}
@@ -19,11 +19,11 @@ const Navbar = () => {
 
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center gap-10 text-lg font-semibold text-[#4A2016]">
-        <a href="#" className="hover:text-[#9E624C] transition-all">Home</a>
+        <a href="home" className="hover:text-[#9E624C] transition-all">Home</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">Cars</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">About</a>
-        <a href="#" className="hover:text-[#9E624C] transition-all">Contact</a>
-        <a href="#" className="hover:text-[#9E624C] transition-all">Login</a>
+        <a href="contact" className="hover:text-[#9E624C] transition-all">Contact</a>
+        {/* <a href="#"  className="hover:text-[#9E624C] transition-all">Login</a> */}
       </div>
 
       {/* CTA Button & Mobile Toggle */}
