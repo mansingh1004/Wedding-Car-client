@@ -12,7 +12,7 @@ import Contact from "./pages/Contact";
 
 import AdminDashboard from "./adminpanel/AdminDashboard";
 import CustomerInquiry from "./adminpanel/CustomerInquiry";
-import Adminlogin from "./adminpanel/AdminLogin"
+import AdminLogin from "./adminpanel/AdminLogin"
 import Dashboard from "./adminpanel/Dashboard";
 import WeddingGuide from "./pages/WeddingGuide";
 // import { Contact } from "lucide-react";
