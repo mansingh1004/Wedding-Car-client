@@ -1,5 +1,5 @@
 // const BackEndUrl="http://localhost:8000"
-const BackEndUrl="https://wedding-car-server.onrender.com"
+const BackEndUrl="http://localhost:8000"
 
 export default BackEndUrl;
 

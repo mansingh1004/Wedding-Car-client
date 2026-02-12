@@ -21,6 +21,9 @@ const AdminDashboard = () => {
     { label: "New Inquiries", value: "07", icon: <Users size={24}/>, color: "bg-purple-100 text-purple-600" },
   ];
 
+
+
+   
   const handleAddCar = (e) => {
     e.preventDefault();
     setIsModalOpen(false);

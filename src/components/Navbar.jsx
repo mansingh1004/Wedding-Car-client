@@ -22,8 +22,8 @@ const navigate=useNavigate()
         <a href="home" className="hover:text-[#9E624C] transition-all">Home</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">Cars</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">About</a>
-        <a href="contact" className="hover:text-[#9E624C] transition-all">Contact</a>
-        {/* <a href="#"  className="hover:text-[#9E624C] transition-all">Login</a> */}
+        <a  onClick={()=>{navigate("contact")}}  className="hover:text-[#9E624C] transition-all">Contact</a>
+        {/* <a href="#"    href="contact"   className="hover:text-[#9E624C] transition-all">Login</a> */}
       </div>
 
       {/* CTA Button & Mobile Toggle */}
