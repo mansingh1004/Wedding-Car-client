@@ -19,7 +19,7 @@ const navigate=useNavigate()
 
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center gap-10 text-lg font-semibold text-[#4A2016]">
-        <a href="home" className="hover:text-[#9E624C] transition-all">Home</a>
+        <a onClick={()=>{navigate("home")}} className="hover:text-[#9E624C] transition-all">Home</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">Cars</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">About</a>
         <a  onClick={()=>{navigate("contact")}}  className="hover:text-[#9E624C] transition-all">Contact</a>

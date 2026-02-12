@@ -35,7 +35,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Browse Cars</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Our Services</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">About Us</a></li>
-              <li><a href="weddingguide" className="hover:text-[#9E624C] transition-colors">Booking Guide</a></li>
+              <li><a  onClick={()=>{navigate("weddingguide")}}  className="hover:text-[#9E624C] transition-colors">Booking Guide</a></li>
             </ul>
           </div>
 
@@ -46,7 +46,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Terms & Conditions</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Help Center</a></li>
-              <li><a href="contact" className="hover:text-[#9E624C] transition-colors">Contact Us</a></li>
+              <li><a onClick={()=>{navigate("contact")}} className="hover:text-[#9E624C] transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
