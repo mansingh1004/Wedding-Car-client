@@ -20,6 +20,7 @@ const [password,setPassword]=useState("");
     const response = await axios.post(api, { adminid, password });
     console.log(response);
 localStorage.setItem("adminid",response.data.adminid)
+
     // Show toast
     toast.success(response.data.msg, {
       position: "top-center",
@@ -41,6 +42,18 @@ localStorage.setItem("adminid",response.data.adminid)
     });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen bg-[#FDF8F5] flex items-center justify-center p-6 relative overflow-hidden font-sans">
@@ -102,6 +115,7 @@ localStorage.setItem("adminid",response.data.adminid)
                     className="w-full bg-[#FDF8F5] border border-[#A6715B]/10 rounded-xl pl-11 pr-11 py-3 outline-none focus:border-[#A6715B]/40 focus:bg-white transition-all text-[#4A2016] text-sm"
                     onChange={(e)=>{setPassword(e.target.value)}}
                   />
+
                   <button 
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}

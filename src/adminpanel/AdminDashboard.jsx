@@ -12,7 +12,15 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const location = useLocation(); 
 
-  const isMainDashboard = location.pathname === '/admin' || location.pathname === '/admin/';
+  // Check if we are on the main dashboard layout but not a specific sub-route, or specifically on the dashboard sub-route
+  const isDashboardActive = location.pathname === '/admindashboard' || location.pathname === '/admindashboard/dashboard';
+  // const isStatsVisible = location.pathname === '/admindashboard' || location.pathname === '/admindashboard/'; // Only show stats on main wrapper if not navigating to children, though usually stats go into the Dashboard component itself.
+
+  // NOTE: Ideally, the stats cards should be moved INTO the <Dashboard /> component 
+  // so they don't show up when <CustomerInquiry /> is rendered.
+  // For now, I will keep them here but conditionally render them only if we are NOT on customerinquiry.
+  
+  const showStats = !location.pathname.includes('customerinquiry');
 
   const stats = [
     { label: "Total Revenue", value: "₹4,25,000", icon: <IndianRupee size={24}/>, color: "bg-green-100 text-green-600" },
@@ -21,9 +29,6 @@ const AdminDashboard = () => {
     { label: "New Inquiries", value: "07", icon: <Users size={24}/>, color: "bg-purple-100 text-purple-600" },
   ];
 
-
-
-   
   const handleAddCar = (e) => {
     e.preventDefault();
     setIsModalOpen(false);
@@ -37,8 +42,27 @@ const AdminDashboard = () => {
     }
   };
 
+  // --- FIXED NAVIGATION FUNCTION ---
+  // const handleNavigation = (path) => {
+  //   // 1. Close sidebar first
+  //   setIsSidebarOpen(false);
+  //   // 2. Navigate to the ABSOLUTE path
+  //   navigate(path);
+  // };
+
+
+
+
+
+  const handleNavigation = (path) => {
+  setIsSidebarOpen(false);
+
+  setTimeout(() => {
+    navigate(path);
+  }, 100);
+};
+
   return (
-    // 'h-screen' aur 'overflow-hidden' se poora page lock ho jayega
     <div className="h-screen bg-[#FDF8F5] flex overflow-hidden">
       
       {/* --- SIDEBAR --- */}
@@ -49,10 +73,16 @@ const AdminDashboard = () => {
       `}>
         {isSidebarOpen && (
           <div onClick={() => setIsSidebarOpen(false)} className="absolute inset-0 bg-black/40 lg:hidden" />
+//  <div 
+//   onClick={() => setIsSidebarOpen(false)} 
+//   className="absolute inset-0 bg-black/40 lg:hidden z-40" 
+// /> 
+
         )}
 
-        {/* 'h-full' ensures the sidebar stays the height of the screen */}
-        <aside className="w-64 bg-[#4A2016] text-white flex flex-col p-6 h-full shrink-0 shadow-2xl">
+        {/* <aside className="w-64 bg-[#4A2016] text-white flex flex-col p-6 h-full shrink-0 shadow-2xl"> */}
+<aside className="relative z-50 w-64 bg-[#4A2016] ...    text-white flex flex-col p-6 h-full shrink-0 shadow-2xl">
+
           <div className="flex items-center justify-between mb-10 px-2">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-[#A6715B] rounded-xl flex items-center justify-center font-serif text-xl italic">W</div>
@@ -64,12 +94,23 @@ const AdminDashboard = () => {
           </div>
           
           <nav className="space-y-2 flex-1 overflow-y-auto no-scrollbar">
+            
+            {/* DASHBOARD BUTTON */}
             <button 
-              onClick={() => navigate('dashboard')}
-              className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all ${isMainDashboard ? 'bg-[#A6715B] text-white' : 'text-white/60 hover:bg-white/5'}`}
+
+              onClick={() => handleNavigation('dashboard')}
+// onClick={() => handleNavigation('/admindashboard/dashboard')}
+
+
+              className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all ${isDashboardActive ? 'bg-[#A6715B] text-white' : 'text-white/60 hover:bg-white/5'}`}
+         
+          
             >
               <LayoutDashboard size={20}/> Dashboard
+
+
             </button>
+
             <button className="w-full flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-white/5 rounded-xl transition-all">
               <Calendar size={20}/> Bookings
             </button>
@@ -80,15 +121,16 @@ const AdminDashboard = () => {
               <Users size={20}/> Customers
             </button>
 
+            {/* CUSTOMER INQUIRY BUTTON */}
             <button 
-              onClick={() => {
-                navigate('customerinquiry');
-                setIsSidebarOpen(false); // Mobile par click karte hi sidebar band ho jaye
-              }} 
+              onClick={() => handleNavigation('customerinquiry')} 
+// onClick={() => handleNavigation('/admindashboard/customerinquiry')}
+
               className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all ${location.pathname.includes('customerinquiry') ? 'bg-[#A6715B] text-white' : 'text-white/60 hover:bg-white/5'}`}
             >
               <MessageSquare size={20}/> Customer Inquiries
             </button>
+
           </nav>
 
           <div className="mt-auto pt-4 border-t border-white/10 shrink-0">
@@ -106,7 +148,6 @@ const AdminDashboard = () => {
       </div>
 
       {/* --- MAIN CONTENT AREA --- */}
-      {/* 'flex-col' aur 'overflow-hidden' important hai header ko fix rakhne ke liye */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
         
         {/* Fixed Header */}
@@ -137,11 +178,11 @@ const AdminDashboard = () => {
         </header>
 
         {/* --- SCROLLABLE MAIN CONTENT --- */}
-        {/* 'overflow-y-auto' sirf is area ko scroll karega */}
         <main className="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10 scroll-smooth">
           
-          {/* Stats Grid */}
-          {isMainDashboard && (
+          {/* Stats Grid - Only show if statsVisible (i.e., not on inquiry page) */}
+          {/* Note: In a cleaner architecture, these stats should be inside the 'Dashboard' component, not the layout */}
+          {showStats && (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 mb-10 animate-in fade-in duration-500">
               {stats.map((stat, i) => (
                 <div key={i} className="bg-white p-5 md:p-6 rounded-[2rem] shadow-sm border border-[#A6715B]/5">
@@ -167,7 +208,6 @@ const AdminDashboard = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">  
           <div onClick={() => setIsModalOpen(false)} className="absolute inset-0 bg-[#4A2016]/80 backdrop-blur-sm transition-opacity animate-in fade-in" />
-          
           <div className="relative bg-white w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-[2rem] md:rounded-[3rem] shadow-2xl animate-in zoom-in-95">
             <div className="bg-[#4A2016] p-6 md:p-8 text-white flex justify-between items-center sticky top-0 z-10">
               <div>
@@ -217,9 +257,6 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
-
-
 
 
 
