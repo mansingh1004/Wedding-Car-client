@@ -1,7 +1,10 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
 const Footer = () => {
+
+  const navigate=useNavigate()
   return (
     <footer className="bg-[#F8F1ED] border-t border-[#633328]/10 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -35,7 +38,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Browse Cars</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Our Services</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">About Us</a></li>
-              <li><a  onClick={()=>{navigate("weddingguide")}}  className="hover:text-[#9E624C] transition-colors">Booking Guide</a></li>
+              <li><a  onClick={()=>{navigate("weddingguide")}}  className="hover:text-[#9E624C]  cursor-pointer   transition-colors">Booking Guide</a></li>
             </ul>
           </div>
 
@@ -46,7 +49,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Terms & Conditions</a></li>
               <li><a href="#" className="hover:text-[#9E624C] transition-colors">Help Center</a></li>
-              <li><a onClick={()=>{navigate("contact")}} className="hover:text-[#9E624C] transition-colors">Contact Us</a></li>
+              <li><a onClick={()=>{navigate("contact")}} className="hover:text-[#9E624C]   cursor-pointer transition-colors">Contact Us</a></li>
             </ul>
           </div>
 
