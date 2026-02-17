@@ -283,10 +283,10 @@ const InquiryList = () => {
   const handleStatusChange = async (id, newStatus) => {
     try {
       // Backend Call
-      await axios.put(`${BackEndUrl}/inquiry/update-status/${id}`, {
+  const respons =    await axios.put(`${BackEndUrl}/inquiry/update-status/${id}`, {
         status: newStatus
       });
-      
+      console.log(respons);
       // Local State Update (Instant UI Refresh)
       setInquiries(prev => prev.map(item => 
         item._id === id ? { ...item, status: newStatus } : item
@@ -395,6 +395,15 @@ const InquiryList = () => {
                           <option value="Completed">Completed</option>
                           <option value="Cancelled">Cancelled</option>
                         </select>
+
+
+                        {/* <select onChange={(e) => handleStatusChange(id, e.target.value)}>
+  <option value="Pending">Pending</option>
+  <option value="In Progress">In Progress</option>
+  <option value="Completed">Completed</option>
+  <option value="Cancelled">Cancelled</option>
+</select> */}
+
                     </div>
                     
                     <button 
