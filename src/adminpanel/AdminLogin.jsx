@@ -103,7 +103,7 @@ localStorage.setItem("adminid",response.data.adminid)
 
               {/* Password */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-[#4A2016]/50 ml-1 tracking-widest">Secret Key</label>
+                <label className="text-[10px] font-bold uppercase text-[#4A2016]/50 ml-1 tracking-widest">Password</label>
                 <div className="relative">
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#A6715B]/70" size={18} />
                   <input 
