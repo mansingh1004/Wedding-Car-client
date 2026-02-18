@@ -90,8 +90,10 @@ import React from 'react';
 import About from './About';
 import FeaturedCars from './FeaturedCars';
 import Contact from './Contact';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+  const navigate=useNavigate();
   return (
     <>
       <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20">
@@ -134,7 +136,7 @@ const Hero = () => {
             <div className="h-[1px] w-8 md:w-16 bg-white/40"></div>
           </div>
 
-          <button className="bg-gradient-to-b from-[#C68D77] to-[#8E4D3E] hover:scale-105 transition-all text-white px-12 py-4 rounded-xl text-xl font-serif shadow-[0_10px_30px_rgba(0,0,0,0.4)] border border-white/10">
+          <button  onClick={()=>{navigate("/booknow")}}    className="bg-gradient-to-b from-[#C68D77] to-[#8E4D3E] hover:scale-105 transition-all text-white px-12 py-4 rounded-xl text-xl font-serif shadow-[0_10px_30px_rgba(0,0,0,0.4)] border border-white/10">
             Book Your Wedding Car
           </button>
         </div>

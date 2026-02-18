@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X,Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,14 +21,34 @@ const navigate=useNavigate()
       <div className="hidden lg:flex items-center gap-10 text-lg font-semibold text-[#4A2016]">
         <a onClick={()=>{navigate("home")}} className="hover:text-[#9E624C]   cursor-pointer transition-all">Home</a>
         <a href="#" className="hover:text-[#9E624C] transition-all">Cars</a>
-        <a href="#" className="hover:text-[#9E624C] transition-all">About</a>
+        <a  onClick={()=>{navigate("about")}} className="hover:text-[#9E624C] cursor-pointer  transition-all">About</a>
         <a  onClick={()=>{navigate("contact")}}  className="hover:text-[#9E624C]   cursor-pointer  transition-all">Contact</a>
         {/* <a href="#"    href="contact"   className="hover:text-[#9E624C] transition-all">Login</a> */}
       </div>
 
       {/* CTA Button & Mobile Toggle */}
       <div className="flex items-center gap-4">
-        <button className="hidden sm:block bg-gradient-to-b from-[#A6715B] to-[#7D4432] text-white px-8 py-2.5 rounded-lg text-lg font-medium shadow-md">
+       <button
+  className="
+    hidden sm:flex 
+    items-center gap-2
+    bg-gradient-to-b from-[#A6715B] to-[#7D4432] 
+    text-white 
+    px-6 md:px-8 
+    py-2 md:py-2.5 
+    rounded-lg 
+    text-base md:text-lg 
+    font-medium 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all duration-300
+  "
+>
+  <Phone size={18} />
+  <span>99180 01088</span>
+</button>
+
+        <button    onClick={()=>{navigate("booknow")}} className="hidden sm:block bg-gradient-to-b from-[#A6715B]  cursor-pointer to-[#7D4432] text-white px-8 py-2.5 rounded-lg text-lg font-medium shadow-md">
           Book Now
         </button>
         <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-[#4A2016]">
@@ -40,10 +60,11 @@ const navigate=useNavigate()
       <div className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden p-8`}>
         <div className="flex justify-end"><X size={32} onClick={() => setIsOpen(false)} /></div>
         <div className="flex flex-col gap-8 text-center mt-10">
-          <a href="#" className="text-2xl font-serif text-[#4A2016]" onClick={() => setIsOpen(false)}>Home</a>
-          <a href="#" className="text-2xl font-serif text-[#4A2016]" onClick={() => setIsOpen(false)}>Cars</a>
-          <a href="#" className="text-2xl font-serif text-[#4A2016]" onClick={() => setIsOpen(false)}>About</a>
-          <button className="bg-[#633328] text-white py-4 rounded-xl text-xl">Book Now</button>
+        <a onClick={()=>{navigate("home")}} className="hover:text-[#9E624C]   cursor-pointer transition-all">Home</a>
+        <a href="#" className="hover:text-[#9E624C] transition-all">Cars</a>
+        <a  onClick={()=>{navigate("about")}} className="hover:text-[#9E624C] cursor-pointer  transition-all">About</a>
+        <a  onClick={()=>{navigate("contact")}}  className="hover:text-[#9E624C]   cursor-pointer  transition-all">Contact</a>
+          <button    onClick={()=>{navigate("booknow")}}  className="bg-[#633328] text-white py-4 rounded-xl text-xl">Book Now</button>
         </div>
       </div>
     </nav>
