@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import BackEndUrl from '../config/BackEndUrl';
 import { 
   LayoutDashboard, Car, Users, Calendar, 
   TrendingUp, IndianRupee, Clock, CheckCircle, 
@@ -9,6 +11,7 @@ import {
 const AdminDashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
+const [totalInquiries, setTotalInquiries] = useState(0);
   const navigate = useNavigate();
   const location = useLocation(); 
 
@@ -26,7 +29,15 @@ const AdminDashboard = () => {
     { label: "Total Revenue", value: "₹4,25,000", icon: <IndianRupee size={24}/>, color: "bg-green-100 text-green-600" },
     { label: "Bookings", value: "48", icon: <Calendar size={24}/>, color: "bg-blue-100 text-blue-600" },
     { label: "Active Cars", value: "12", icon: <Car size={24}/>, color: "bg-orange-100 text-orange-600" },
-    { label: "New Inquiries", value: "07", icon: <Users size={24}/>, color: "bg-purple-100 text-purple-600" },
+    // { label: "New Inquiries", value: "07", icon: <Users size={24}/>, color: "bg-purple-100 text-purple-600" },
+
+{ 
+      label: "Total New Inquiries", 
+      // Agar number 10 se chota hai, toh aage '0' lagayega (jaise 05), warna normal number dikhayega
+      value: totalInquiries < 10 ? `0${totalInquiries}` : totalInquiries, 
+      icon: <Users size={24}/>, 
+      color: "bg-purple-100 text-purple-600" 
+    },
   ];
 
   const handleAddCar = (e) => {
@@ -54,6 +65,9 @@ const AdminDashboard = () => {
 
 
 
+
+
+
   const handleNavigation = (path) => {
   setIsSidebarOpen(false);
 
@@ -61,6 +75,35 @@ const AdminDashboard = () => {
     navigate(path);
   }, 100);
 };
+
+
+
+
+
+const fetchTotalInquiries = async () => {
+  try {
+    const response = await axios.get(`${BackEndUrl}/inquiry/get-all`);
+
+    // console.log(response.data); // DEBUG
+
+    if (response.data.success) {
+      const count = response.data.count 
+        ? response.data.count 
+        : response.data.data.length;
+
+      setTotalInquiries(count);
+    }
+    console.log(response)
+  } catch (error) {
+    console.error("Error fetching stats:", error);
+  }
+};
+
+
+
+  useEffect(() => {
+    fetchTotalInquiries();
+  }, []);
 
   return (
     <div className="h-screen bg-[#FDF8F5] flex overflow-hidden">
@@ -183,18 +226,34 @@ const AdminDashboard = () => {
           {/* Stats Grid - Only show if statsVisible (i.e., not on inquiry page) */}
           {/* Note: In a cleaner architecture, these stats should be inside the 'Dashboard' component, not the layout */}
           {showStats && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 mb-10 animate-in fade-in duration-500">
-              {stats.map((stat, i) => (
-                <div key={i} className="bg-white p-5 md:p-6 rounded-[2rem] shadow-sm border border-[#A6715B]/5">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-2xl ${stat.color}`}>{stat.icon}</div>
-                    <TrendingUp size={16} className="text-green-500"/>
-                  </div>
-                  <p className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">{stat.label}</p>
-                  <h3 className="text-[#4A2016] text-xl md:text-2xl font-bold mt-1">{stat.value}</h3>
-                </div>
-              ))}
-            </div>
+            // <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 mb-10 animate-in fade-in duration-500">
+            //   {stats.map((stat, i) => (
+            //     <div key={i} className="bg-white p-5 md:p-6 rounded-[2rem] shadow-sm border border-[#A6715B]/5">
+            //       <div className="flex items-center justify-between mb-4">
+            //         <div className={`p-3 rounded-2xl ${stat.color}`}>{stat.icon}</div>
+            //         <TrendingUp size={16} className="text-green-500"/>
+            //       </div>
+            //       <p className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">{stat.label}</p>
+            //       <h3 className="text-[#4A2016] text-xl md:text-2xl font-bold mt-1">{stat.value}</h3>
+            //     </div>
+            //   ))}
+            // </div>
+
+
+<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 mb-10 animate-in fade-in duration-500">
+      {stats.map((stat, i) => (
+        <div key={i} className="bg-white p-5 md:p-6 rounded-[2rem] shadow-sm border border-[#A6715B]/5 hover:shadow-md transition-all">
+          <div className="flex items-center justify-between mb-4">
+            <div className={`p-3 rounded-2xl ${stat.color}`}>{stat.icon}</div>
+            <TrendingUp size={16} className="text-green-500"/>
+          </div>
+          <p className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">{stat.label}</p>
+          <h3 className="text-[#4A2016] text-xl md:text-2xl font-bold mt-1">{stat.value}</h3>
+        </div>
+      ))}
+    </div>
+
+       
           )}
 
           {/* Inquiry Page Content */}

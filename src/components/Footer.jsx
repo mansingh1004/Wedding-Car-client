@@ -77,8 +77,8 @@ const Footer = () => {
         <div className="border-t border-[#633328]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[#4A2016]/60 text-xs uppercase tracking-widest font-medium">
           <p>© 2026  Wedding Car Booking System. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <span className="cursor-pointer hover:text-[#4A2016]">Sitemap</span>
-            <span className="cursor-pointer hover:text-[#4A2016]">Security</span>
+            {/* <span className="cursor-pointer hover:text-[#4A2016]">Sitemap</span>
+            <span className="cursor-pointer hover:text-[#4A2016]">Security</span> */}
           </div>
         </div>
       </div>
