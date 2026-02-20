@@ -123,8 +123,8 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-10 text-lg font-semibold text-[#4A2016]">
-          <a onClick={()=>{navigate("home")}} className="hover:text-[#9E624C] cursor-pointer transition-all">Home</a>
-          <a href="#" className="hover:text-[#9E624C] transition-all">Cars</a>
+          <a onClick={()=>{navigate("home")}} className="hover:text-[rgb(158,98,76)] cursor-pointer transition-all">Home</a>
+          <a onClick={()=>{navigate("car")}} className="hover:text-[#9E624C] cursor-pointer  transition-all">Cars</a>
           <a onClick={()=>{navigate("about")}} className="hover:text-[#9E624C] cursor-pointer transition-all">About</a>
           <a onClick={()=>{navigate("contact")}} className="hover:text-[#9E624C] cursor-pointer transition-all">Contact</a>
         </div>
@@ -186,7 +186,7 @@ const Navbar = () => {
         {/* Navigation Links (Left Aligned) */}
         <div className="flex flex-col gap-6 text-left mt-4 text-white text-xl font-medium">
           <a onClick={()=>{navigate("home"); setIsOpen(false);}} className="hover:text-[#F8F1ED] hover:pl-2 cursor-pointer transition-all border-b border-white/10 pb-4">Home</a>
-          <a href="#" onClick={()=>{setIsOpen(false);}} className="hover:text-[#F8F1ED] hover:pl-2 cursor-pointer transition-all border-b border-white/10 pb-4">Cars</a>
+          <a onClick={()=>{navigate("car"); setIsOpen(false);}} className="hover:text-[#F8F1ED] hover:pl-2 cursor-pointer transition-all border-b border-white/10 pb-4">Cars</a>
           <a onClick={()=>{navigate("about"); setIsOpen(false);}} className="hover:text-[#F8F1ED] hover:pl-2 cursor-pointer transition-all border-b border-white/10 pb-4">About</a>
           <a onClick={()=>{navigate("contact"); setIsOpen(false);}} className="hover:text-[#F8F1ED] hover:pl-2 cursor-pointer transition-all border-b border-white/10 pb-4">Contact</a>
           

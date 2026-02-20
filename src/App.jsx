@@ -9,7 +9,7 @@ import BookNow from "./pages/BookNow";
 import Chatbot from "./pages/Chatbot";
 import WhatsApp from "./pages/WhatsApp"
 import Contact from "./pages/Contact";
-
+import Cars from "./pages/Cars"
 import AdminDashboard from "./adminpanel/AdminDashboard";
 import CustomerInquiry from "./adminpanel/CustomerInquiry";
 import AdminLogin from "./adminpanel/AdminLogin"
@@ -33,6 +33,7 @@ const App = () => {
           <Route path="registration" element={<Registration />} />
           <Route path="booknow" element={<BookNow />} />
           <Route path="contact" element={<Contact/>}/>
+          <Route path="car" element={<Cars/>}/>
           <Route path="weddingguide" element={<WeddingGuide/>}/>
            {/* <Route path="customerinquiry" element={<CustomerInquiry/>}/> */}
         </Route>
