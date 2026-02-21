@@ -15,6 +15,7 @@ import CustomerInquiry from "./adminpanel/CustomerInquiry";
 import AdminLogin from "./adminpanel/AdminLogin"
 import Dashboard from "./adminpanel/Dashboard";
 import WeddingGuide from "./pages/WeddingGuide";
+import BookingList from "./adminpanel/BookingList";
 // import { Contact } from "lucide-react";
 // import AddCarDetail from "./adminpanel/AddCarDetail"
 
@@ -52,6 +53,7 @@ const App = () => {
   {/* <Route index element={<AdminDashboard />} /> */}
    <Route path="dashboard" element={<Dashboard/>}/>
   <Route path="customerinquiry" element={<CustomerInquiry />} />
+  <Route path="bookinglist"  element={<BookingList/>}/>
  
 </Route>
 

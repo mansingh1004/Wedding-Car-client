@@ -154,7 +154,7 @@ const fetchTotalInquiries = async () => {
 
             </button>
 
-            <button className="w-full flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-white/5 rounded-xl transition-all">
+            <button     onClick={() => handleNavigation('bookinglist')} className="w-full flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-white/5 rounded-xl transition-all">
               <Calendar size={20}/> Bookings
             </button>
             <button className="w-full flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-white/5 rounded-xl transition-all">
